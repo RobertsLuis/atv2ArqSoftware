@@ -1,0 +1,28 @@
+1. Princípio da Responsabilidade Única (SRP)
+Conceito: Uma classe deve ter apenas uma razão para mudar, ou seja, deve ter apenas uma responsabilidade.  Aplicação no projeto:
+Os controllers (ProdutoController) têm apenas a responsabilidade de lidar com requisições HTTP.
+Os DTOs (ProdutoCriarDTO) são responsáveis apenas pelo transporte de dados.
+As interfaces de serviço (ProdutoReadService, ProdutoWriteService) definem contratos específicos.
+Os repositories (ProdutoRepository) são responsáveis apenas pela persistência de dados.
+
+2. Princípio do Aberto/Fechado (OCP)
+Conceito: As classes devem ser abertas para extensão, mas fechadas para modificação. Aplicação no projeto:
+As classes de serviço (ProdutoReadService, ProdutoWriteService) podem ser estendidas para adicionar novas funcionalidades sem modificar o código existente.
+
+3. Princípio da Substituição de Liskov (LSP)
+Conceito: Objetos de uma classe derivada devem poder substituir objetos da classe base sem afetar a corretude do programa.  Aplicação no projeto:
+ProdutoServiceImpl implementa tanto ProdutoReadService quanto ProdutoWriteService, mantendo o comportamento esperado de ambas as interfaces.
+PrecoValidator pode substituir ProdutoValidator em qualquer contexto sem quebrar a funcionalidade.
+
+4. Princípio da Segregação de Interfaces (ISP)
+Conceito: Uma classe não deve ser forçada a implementar interfaces que não utiliza. Aplicação no projeto:
+As interfaces ProdutoReadService e ProdutoWriteService são segregadas, permitindo que classes implementem apenas o que realmente precisam.
+
+5. Princípio da Inversão de Dependência (DIP)
+Conceito: Dependa de abstrações, não de implementações concretas. Aplicação no projeto:
+As classes de serviço dependem de interfaces (ProdutoReadService, ProdutoWriteService) em vez de implementações concretas.
+Os controllers dependem de abstrações (ProdutoService) em vez de implementações concretas.
+Os repositórios dependem de abstrações (ProdutoRepository) em vez de implementações concretas.
+Os validadores dependem de abstrações (ProdutoValidator) em vez de implementações concretas.
+
+O projeto demonstra uma arquitetura bem estruturada que segue os princípios SOLID, promovendo um código de fácil manutenção, testável e extensível.
